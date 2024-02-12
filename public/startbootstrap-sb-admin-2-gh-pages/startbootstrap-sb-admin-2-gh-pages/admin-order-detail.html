@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Admin-Catagery </title>
+    <title>Order - Details</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -23,9 +23,8 @@
 <body id="page-top">
     <div id="wrapper">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3"> Kingsman Tailer</div>
+                <div class="sidebar-brand-text mx-3">Kingsman Tailer</div>
             </a>
             <hr class="sidebar-divider my-0" />
             <li class="nav-item">
@@ -87,44 +86,98 @@
                     </form>
                 </nav>
                 <div class="container-fluid">
-
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h3>Catagery</h3>
-                            <a href="admin-add-category.html" class="btn btn-primary">Add New Catagery</a>
+                            <h3>Order Details</h3>
+                            <div>
+                                <a href="admin-order.html" class="btn btn-primary">Back</a>
+                                <button class="btn btn-primary" type="button" onclick="window.print()">
+                                    Print Invoice
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table">
+                                <tr>
+                                    <th>Bill No.</th>
+                                    <td>012345</td>
+                                    <th>Custamer Id</th>
+                                    <td>Nayan@123</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>17 Dec 1998</td>
+                                    <th>Name</th>
+                                    <td>Raval Nayan</td>
+                                </tr>
+                                <tr>
+                                    <th>Amount</th>
+                                    <td>$400</td>
+                                    <th>Adress</th>
+                                    <td>Amsterdam</td>
+                                </tr>
+                                <tr>
+                                    <th>Payment Status</th>
+                                    <td>Paid</td>
+                                    <th>City</th>
+                                    <td>Netherlands</td>
+                                </tr>
+                                <tr>
+                                    <th>Order Status</th>
+                                    <td>
+                                        Dispatch Status &nbsp;
+                                        <select name="order-status" class="form-select">
+                                            <option value="">order Conform</option>
+                                            <option value="">Dispatched</option>
+                                            <option value="">Delivered</option>
+                                            <option value="">Return</option>
+                                        </select>
+                                    </td>
+                                    <th>Pincode</th>
+                                    <td>40050</td>
+                                </tr>
+                                <tr>
+                                    <th>Remark</th>
+                                    <td>None</td>
+                                    <th>Mobile</th>
+                                    <td>9988776655</td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered table-striped table-sm mt-3">
                                 <thead>
                                     <tr>
-                                        <th class="text-bg-light-gray">No</th>
-                                        <th class="text-bg-light-gray">Product Name </th>
-                                        <th class="text-bg-light-gray">Photos</th>
-                                        <th class="text-bg-light-gray">Is Live *</th>
-                                        <th class="text-bg-light-gray">Action</th>
+                                        <th>Product ID</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>shoes</td>
-                                        <td><img src="https://picsum.photos/200" alt=""></td>
-                                        <td>Sale is Live</td>
-                                        <td><a href="admin-edit-category.html"><button  class="btn btn-info mb-2"><i class="fa-regular fa-pen-to-square "></i> Edite</button></a><br>
-                                            <!-- <a href="admin-product-detail.html"><button class="btn btn-info mb-2"><i class="fa-solid fa-eye"></i> View</button></a> <br> -->
-                                        <button class="btn btn-info mb-2"><i class="fa-solid fa-eraser"></i>Remove</button> </td>
+                                        <td>001</td>
+                                        <td>Product A</td>
+                                        <td>₹50.00</td>
+                                        <td>2</td>
+                                        <td>₹100.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>002</td>
+                                        <td>Product B</td>
+                                        <td>₹75.00</td>
+                                        <td>3</td>
+                                        <td>₹225.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <th>₹325.00</th>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
 
         <!-- Bootstrap core JavaScript-->
@@ -137,6 +190,7 @@
         <!-- Custom scripts for all pages-->
         <script src="js/sb-admin-2.min.js"></script>
         <script src="https://kit.fontawesome.com/20994dd270.js" crossorigin="anonymous"></script>
+    </div>
 </body>
 
 </html>
