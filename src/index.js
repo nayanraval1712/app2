@@ -3,15 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AdminLogin from './AdminLogin';
+import AdminForgotpassword from './AdminForgotpassword';
+import AdminUser from './AdminUser';
+import AdminCategory from './AdminCategory';
+import AdminAddCategory from './AdminAddCategory';
+import AdminEditCategory from './AdminEditCategory';
+import AdminProduct from './AdminProduct';
+import AdminAddProduct from './AdminAddProduct';
+import AdminEditProduct from './AdminEditProduct';
+import AdminProductDetail from './AdminProductDetail';
+import AdminOrder from './AdminOrder';
+import AdminOrderDetails from './AdminOrderDetails';
+import AdminManu from './AdminManu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <AdminUser />
 );
+reportWebVitals(<AdminUser />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
