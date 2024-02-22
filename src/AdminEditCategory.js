@@ -21,7 +21,7 @@ export default function AdminEditCategory() {
               <div className="card">
                 <div className="card-header d-flex justify-content-between">
                   <h3>Edit Catagery</h3>
-                  <a href="admin-add-category.html" className="btn btn-primary">Back</a>
+                  <a href="/catagery" className="btn btn-primary">Back</a>
                 </div>
                 <div className="card-body">
                   <table className="table">
@@ -41,9 +41,9 @@ export default function AdminEditCategory() {
                         <td><img src="https://picsum.photos/200" alt /></td>
                         <td>Sale is Live</td>
                         <td>
-                          <a href="admin-edit-category.html"><button className="btn btn-info mb-2">
-                              <i className="fa-regular fa-pen-to-square" /> Edite
-                            </button></a><br />
+                          <button className="btn btn-info mb-2">
+                              <i className="fa-regular fa-pen-to-square" /> Save Edite
+                            </button><br />
                           {/* <a href="admin-product-detail.html"><button class="btn btn-info mb-2"><i class="fa-solid fa-eye"></i> View</button></a> <br> */}
                           <button className="btn btn-info mb-2">
                             <i className="fa-solid fa-eraser" />Remove

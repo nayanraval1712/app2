@@ -22,7 +22,7 @@ export default function AdminEditProduct() {
                         <div className="card">
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Edit Product</h3>
-                                <a href="admin-product.html" className="btn btn-primary">Back</a>
+                                <a href="/product" className="btn btn-primary">Back</a>
                             </div>
                             <div className="card-body">
                                 <form>

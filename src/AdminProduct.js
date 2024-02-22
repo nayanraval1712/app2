@@ -22,7 +22,7 @@ export default function AdminProduct() {
                         <div className="card">
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Produces</h3>
-                                <a href="admin-add-product.html" className="btn btn-primary">Add to New Products</a>
+                                <a href="/addproduct" className="btn btn-primary">Add to New Products</a>
                             </div>
                             <div className="card-body">
                                 <table className="table">
@@ -45,8 +45,8 @@ export default function AdminProduct() {
                                             <td>2500$</td>
                                             <td>In/Out Of Stock</td>
                                             <td>Sale is Live</td>
-                                            <td><a href="admin-edit-product.html"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></a><br />
-                                                <a href="admin-product-detail.html"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
+                                            <td><a href="/editproduct"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></a><br />
+                                                <a href="/productdetail"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
                                                 <button className="btn btn-info mb-2"><i className="fa-solid fa-eraser" />Remove</button> </td>
                                         </tr>
                                     </tbody>

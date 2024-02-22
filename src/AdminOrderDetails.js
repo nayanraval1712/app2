@@ -23,8 +23,8 @@ export default function AdminOrderDetails() {
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Order Details</h3>
                                 <div>
-                                    <a href="admin-order.html" className="btn btn-primary">Back</a> &nbsp;  
-                                    <button className="btn btn-primary" type="button" onclick="window.print()">
+                                    <a href="/order" className="btn btn-primary">Back</a> &nbsp;
+                                    <button className="btn btn-primary" type="button" onClick={() => window.print()}>
                                         Print Invoice
                                     </button>
                                 </div>

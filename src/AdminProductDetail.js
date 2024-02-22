@@ -1,10 +1,9 @@
 import AdminManu from "./AdminManu";
-export default function AdminOrder() {
+export default function AdminProductDetail() {
     return (
         <div id="wrapper">
             <AdminManu />
             <div id="content-wrapper" className="d-flex flex-column">
-                {/* Main Content */}
                 <div id="content">
                     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -21,36 +20,47 @@ export default function AdminOrder() {
                     <div className="container-fluid">
                         <div className="card">
                             <div className="card-header d-flex justify-content-between">
-                                <h3>Order Details</h3>
-                                {/* <a href="admin-add-category.html" class="btn btn-primary">Add New Catagery</a> */}
+                                <h3>Product Details</h3>
+                                <a href="/product" className="btn btn-primary">Back</a>
                             </div>
                             <div className="card-body">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th className="text-bg-light-gray">No</th>
-                                            <th className="text-bg-light-gray">Bill Date </th>
-                                            <th className="text-bg-light-gray">Amount</th>
-                                            <th className="text-bg-light-gray">Status *</th>
-                                            <th className="text-bg-light-gray">Delivery Detail</th>
-                                            <th className="text-bg-light-gray">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Dec 17 1998</td>
-                                            <td>10000</td>
-                                            <td>Order Conform</td>
-                                            <td>Nayan Raval <br /> Bhavnager 364002</td>
-                                            <td>
-                                                {/* <a href="admin-edit-category.html"><button  class="btn btn-info mb-2"><i class="fa-regular fa-pen-to-square "></i> Edite</button></a><br> */}
-                                                <a href="admin-order-detail.html"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
-                                                {/* <button class="btn btn-info mb-2"><i class="fa-solid fa-eraser"></i>Remove</button> */}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <img src="https://picsum.photos/400" alt />
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <table className="table text-bg-light-gray table-striped">
+                                            <tbody><tr>
+                                                <td>Product Id</td>
+                                                <td />
+                                            </tr>
+                                                <tr>
+                                                    <td>Catagery</td>
+                                                    <td />
+                                                </tr>
+                                                <tr>
+                                                    <td>Prise</td>
+                                                    <td />
+                                                </tr>
+                                                <tr>
+                                                    <td>Stock</td>
+                                                    <td />
+                                                </tr>
+                                                <tr>
+                                                    <td>Weight</td>
+                                                    <td />
+                                                </tr>
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td />
+                                                </tr>
+                                                <tr>
+                                                    <td>Is Live</td>
+                                                    <td />
+                                                </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

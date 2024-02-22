@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function AdminForgotpassword() {
     return (
         <div className="container bg-gradient-primary mt-5">

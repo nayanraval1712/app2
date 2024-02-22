@@ -22,7 +22,7 @@ export default function AdminOrder() {
                         <div className="card">
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Order Details</h3>
-                                {/* <a href="admin-add-category.html" class="btn btn-primary">Add New Catagery</a> */}
+                                
                             </div>
                             <div className="card-body">
                                 <table className="table">
@@ -45,7 +45,7 @@ export default function AdminOrder() {
                                             <td>Nayan Raval <br /> Bhavnager 364002</td>
                                             <td>
                                                 {/* <a href="admin-edit-category.html"><button  class="btn btn-info mb-2"><i class="fa-regular fa-pen-to-square "></i> Edite</button></a><br> */}
-                                                <a href="admin-order-detail.html"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
+                                                <a href="/orderdetails"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
                                                 {/* <button class="btn btn-info mb-2"><i class="fa-solid fa-eraser"></i>Remove</button> */}
                                             </td>
                                         </tr>
