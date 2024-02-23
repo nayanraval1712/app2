@@ -1,5 +1,51 @@
 import AdminManu from "./AdminManu";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 export default function AdminProduct() {
+    let DisplayProduct = function (item) {
+        return (
+            <tr>
+                <td>{item['id']}</td>
+                <td>{item['titel']}<br />
+                    <span className="text-danger">({item['categorytitle']})</span>
+                </td>
+                <td > <img src={"https://www.theeasylearnacademy.com/shop/images/product/" + item['photo']}  className="img-fluid"/></td>
+                <td>{item['price']}</td>
+                <td>{item['stock']}</td>
+                <td>{(item['islive'] == '1') ? 'Yes' : 'No'}</td>
+                <td><Link to="/editproduct"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></Link><br />
+                    <Link to="/productdetail"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link> <br />
+                    <button className="btn btn-info mb-2"><i className="fa-solid fa-eraser" />Remove</button> </td>
+            </tr>
+        )
+    }
+    // creat steate arey 
+    let [product, setproduct] = useState([])
+    // use hook effect 
+    useEffect(() => {
+        let apiAddress = "https://www.theeasylearnacademy.com/shop/ws/product.php"
+        fetch(apiAddress)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                let error = data[0]['error']
+                console.log(error);
+                if (error !== 'no')
+                    console.log('error')
+                else if (data[1]['total'] === 0) {
+                    console.log("error ")
+                }
+                else {
+                    data.splice(0, 2);
+                    console.log(data);
+                    setproduct(data);
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+                console.log('error he bhai ...')
+            })
+    })
     return (
         <div id="wrapper">
             <AdminManu />
@@ -30,7 +76,7 @@ export default function AdminProduct() {
                                         <tr>
                                             <th className="text-bg-light-gray">No</th>
                                             <th className="text-bg-light-gray">Product Name</th>
-                                            <th className="text-bg-light-gray">Photo</th>
+                                            <th className="text-bg-light-gray" width='30%'>Photo</th>
                                             <th className="text-bg-light-gray">Price</th>
                                             <th className="text-bg-light-gray">Stock</th>
                                             <th className="text-bg-light-gray">Is Live</th>
@@ -38,17 +84,7 @@ export default function AdminProduct() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>shoes</td>
-                                            <td><img src="https://picsum.photos/200" alt className="img-fluid" /></td>
-                                            <td>2500$</td>
-                                            <td>In/Out Of Stock</td>
-                                            <td>Sale is Live</td>
-                                            <td><a href="/editproduct"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></a><br />
-                                                <a href="/productdetail"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
-                                                <button className="btn btn-info mb-2"><i className="fa-solid fa-eraser" />Remove</button> </td>
-                                        </tr>
+                                        {product.map((item) => DisplayProduct(item))}
                                     </tbody>
                                 </table>
                             </div>

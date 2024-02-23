@@ -9,7 +9,7 @@ export default function AdminCategory() {
       <tr>
         <td>{item.id}</td>
         <td>{item.titel}</td>
-        <td><img src={"https://www.theeasylearnacademy.com/shop/category" + item.photos} alt /></td>
+        <td><img src={"https://www.theeasylearnacademy.com/shop/images/category/" + item.photo} className="img-fluid" /></td>
         <td>{(item.islive == '1') ? 'Yes' : 'No'}</td>
         <td>
           <Link to='/editcatagery'><button className="btn btn-info mb-2">
@@ -80,7 +80,7 @@ export default function AdminCategory() {
                     <tr>
                       <th className="text-bg-light-gray">No</th>
                       <th className="text-bg-light-gray">Product Name</th>
-                      <th className="text-bg-light-gray">Photos</th>
+                      <th width='10%' className="text-bg-light-gray" >Photos</th>
                       <th className="text-bg-light-gray">Is Live *</th>
                       <th className="text-bg-light-gray">Action</th>
                     </tr>
