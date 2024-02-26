@@ -14,7 +14,7 @@ export default function AdminProduct() {
                 <td>{item['stock']}</td>
                 <td>{(item['islive'] == '1') ? 'Yes' : 'No'}</td>
                 <td><Link to="/editproduct"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></Link><br />
-                    <Link to="/productdetail"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link> <br />
+                    <Link to={"/productdetail/"+item['id'] }><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link> <br />
                     <button className="btn btn-info mb-2"><i className="fa-solid fa-eraser" />Remove</button> </td>
             </tr>
         )
