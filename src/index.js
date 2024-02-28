@@ -33,7 +33,7 @@ function MyRouter() {
         <Route path='/editproduct' element={<AdminEditProduct />} />
         <Route path='/productdetail/:productid' element={<AdminProductDetail />} />
         <Route path='/order' element={<AdminOrder />} />
-        <Route path='/orderdetails' element={<AdminOrderDetails />} />
+        <Route path='/orderdetails/:orderid' element={<AdminOrderDetails />} />
         <Route path='/manu' element={<AdminManu />} />
 
       </Routes>

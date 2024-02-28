@@ -72,7 +72,7 @@ export default function AdminCategory() {
             <div className="card">
               <div className="card-header d-flex justify-content-between">
                 <h3>Catagery</h3>
-                <a href="/addcatagery" className="btn btn-primary">Add New Catagery</a>
+                <Link to="/addcatagery" className="btn btn-primary">Add New Catagery</Link>
               </div>
               <div className="card-body">
                 <table className="table">

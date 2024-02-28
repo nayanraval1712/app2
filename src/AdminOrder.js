@@ -1,5 +1,51 @@
 import AdminManu from "./AdminManu";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 export default function AdminOrder() {
+    let DisplayOrders = function (item) {
+        return (
+            <tr>
+                <td>{item.id}</td>
+                <td>{item.billdate}</td>
+                <td>{item.amount}</td>
+                <td>{item.orderstarus}</td>
+                <td>{item.fullname} <br /> {item.city} - {item.pincoade}</td>
+                <td>
+                    <Link to={"/orderdetails/"+item['id']}><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link>
+                </td>
+            </tr>
+        )
+    }
+
+    let [order, setOrders] = useState([])
+    useEffect(() => {
+        // api call
+        if (order.length === 0) {
+            let apiAddress = 'https:www.theeasylearnacademy.com/shop/ws/orders.php'
+            axios({
+                method: 'get',
+                responseType: 'json',
+                url: apiAddress
+            })
+                .then((response) => {
+                    console.log(response)
+                    let error = response.data[0]['error'];
+                    if (error !== 'no')
+                        console.log(error);
+                    else if (response.data[1]['total'] === 0)
+                        console.log('no users found');
+                    else {
+                        response.data.splice(0, 2);
+                        setOrders(response.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.code)
+                })
+        }
+    })
+
     return (
         <div id="wrapper">
             <AdminManu />
@@ -22,7 +68,7 @@ export default function AdminOrder() {
                         <div className="card">
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Order Details</h3>
-                                
+
                             </div>
                             <div className="card-body">
                                 <table className="table">
@@ -37,18 +83,7 @@ export default function AdminOrder() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Dec 17 1998</td>
-                                            <td>10000</td>
-                                            <td>Order Conform</td>
-                                            <td>Nayan Raval <br /> Bhavnager 364002</td>
-                                            <td>
-                                                {/* <a href="admin-edit-category.html"><button  class="btn btn-info mb-2"><i class="fa-regular fa-pen-to-square "></i> Edite</button></a><br> */}
-                                                <a href="/orderdetails"><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></a> <br />
-                                                {/* <button class="btn btn-info mb-2"><i class="fa-solid fa-eraser"></i>Remove</button> */}
-                                            </td>
-                                        </tr>
+                                        {order.map((item) => DisplayOrders(item))}
                                     </tbody>
                                 </table>
                             </div>

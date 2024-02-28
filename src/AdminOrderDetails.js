@@ -1,5 +1,36 @@
 import AdminManu from "./AdminManu";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 export default function AdminOrderDetails() {
+    // varible banavo j quary string pass kare 
+    let { orderid } = useParams();
+    //create state object
+    let [order, setOrder] = useState({});
+
+    useEffect(() => {
+
+        let apiAddress = 'https:www.theeasylearnacademy.com/shop/ws/orders.php?id=' + orderid;
+        console.log(apiAddress);
+        axios({
+            method: "get",
+            responseType: 'json',
+            url: apiAddress
+        }).then((response) => {
+            console.log(response);
+            let error = response.data[0]['error'];
+            if (error != 'no') {
+                console.log(error);
+            }
+            else if (response.data[1]['total'] === 0) {
+                console.log('no order details found');
+            }
+            else {
+                setOrder(response.data[2]);
+            }
+        })
+    })
+
     return (
         <div id="wrapper">
             <AdminManu />
@@ -23,7 +54,7 @@ export default function AdminOrderDetails() {
                             <div className="card-header d-flex justify-content-between">
                                 <h3>Order Details</h3>
                                 <div>
-                                    <a href="/order" className="btn btn-primary">Back</a> &nbsp;
+                                    <Link to="/order" className="btn btn-primary">Back</Link> &nbsp;
                                     <button className="btn btn-primary" type="button" onClick={() => window.print()}>
                                         Print Invoice
                                     </button>
@@ -31,29 +62,30 @@ export default function AdminOrderDetails() {
                             </div>
                             <div className="card-body">
                                 <table className="table">
-                                    <tbody><tr>
-                                        <th>Bill No.</th>
-                                        <td>012345</td>
-                                        <th>Custamer Id</th>
-                                        <td>Nayan@123</td>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <th>Bill No.</th>
+                                            <td>{order['id']}</td>
+                                            <th>Custamer Id</th>
+                                            <td>{order['id']}</td>
+                                        </tr>
                                         <tr>
                                             <th>Date</th>
-                                            <td>17 Dec 1998</td>
+                                            <td>{order['billdate']}</td>
                                             <th>Name</th>
-                                            <td>Raval Nayan</td>
+                                            <td>{order['fullname']}</td>
                                         </tr>
                                         <tr>
                                             <th>Amount</th>
-                                            <td>$400</td>
+                                            <td>${order['amount']}</td>
                                             <th>Adress</th>
-                                            <td>Amsterdam</td>
+                                            <td>{order['address1']} {order['address2']}</td>
                                         </tr>
                                         <tr>
                                             <th>Payment Status</th>
-                                            <td>Paid</td>
+                                            <td>{order['id']}</td>
                                             <th>City</th>
-                                            <td>Netherlands</td>
+                                            <td>{order['city']}</td>
                                         </tr>
                                         <tr>
                                             <th>Order Status</th>
@@ -67,7 +99,7 @@ export default function AdminOrderDetails() {
                                                 </select>
                                             </td>
                                             <th>Pincode</th>
-                                            <td>40050</td>
+                                            <td>{order['pincode']}</td>
                                         </tr>
                                         <tr>
                                             <th>Remark</th>
@@ -115,3 +147,4 @@ export default function AdminOrderDetails() {
         </div>
     )
 }
+
