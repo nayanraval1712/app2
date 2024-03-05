@@ -1,7 +1,33 @@
 import AdminManu from "./AdminManu";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 export default function AdminProduct() {
+
+    // creat steate arey 
+    let [product, setproduct] = useState([])
+    let Deleateproduct = function (id) {
+        console.log(id)
+        let apiAddress = 'https:www.theeasylearnacademy.com/shop/ws/delete_product.php?id=' + id
+        axios({
+            method: 'get',
+            responseType: 'json',
+            url: apiAddress
+        }).then((response) => {
+            console.log(response)
+            let error = response.data[0]['error']
+            if (error != 'no')
+                console.log(error)
+            else {
+                console.log(response.data[1]['message'])
+                setproduct(product.filter((item) => {
+                    if (item.id != id)
+                        return item
+                }));
+            }
+        })
+    }
+
     let DisplayProduct = function (item) {
         return (
             <tr>
@@ -9,18 +35,19 @@ export default function AdminProduct() {
                 <td>{item['titel']}<br />
                     <span className="text-danger">({item['categorytitle']})</span>
                 </td>
-                <td > <img src={"https://www.theeasylearnacademy.com/shop/images/product/" + item['photo']}  className="img-fluid"/></td>
+                <td > <img src={"https://www.theeasylearnacademy.com/shop/images/product/" + item['photo']} className="img-fluid" /></td>
                 <td>{item['price']}</td>
                 <td>{item['stock']}</td>
                 <td>{(item['islive'] == '1') ? 'Yes' : 'No'}</td>
                 <td><Link to="/editproduct"><button className="btn btn-info mb-2"><i className="fa-regular fa-pen-to-square " /> Edite</button></Link><br />
-                    <Link to={"/productdetail/"+item['id'] }><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link> <br />
-                    <button className="btn btn-info mb-2"><i className="fa-solid fa-eraser" />Remove</button> </td>
+                    <Link to={"/productdetail/" + item['id']}><button className="btn btn-info mb-2"><i className="fa-solid fa-eye" /> View</button></Link> <br />
+                    <a href="" onClick={(e) => { e.preventDefault(); Deleateproduct(item.id) }} > <button className="btn btn-info mb-2">
+                        <i className="fa-solid fa-eraser" />Remove
+                    </button></a></td>
             </tr>
         )
     }
-    // creat steate arey 
-    let [product, setproduct] = useState([])
+
     // use hook effect 
     useEffect(() => {
         let apiAddress = "https://www.theeasylearnacademy.com/shop/ws/product.php"

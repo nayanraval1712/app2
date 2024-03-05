@@ -1,8 +1,32 @@
 import AdminManu from "./AdminManu";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 export default function AdminCategory() {
 
+  // creat state arrey 
+  let [category, setCatagery] = useState([])
+  let Deleatecategory = function (id) {
+    console.log(id)
+    let apiAddress = 'https:www.theeasylearnacademy.com/shop/ws/delete_category.php?id=' + id
+    axios({
+      method: 'get',
+      responseType: 'json',
+      url: apiAddress
+    }).then((response) => {
+      console.log(response)
+      let error = response.data[0]['error']
+      if (error != 'no')
+        console.log(error)
+      else {
+        console.log(response.data[1]['message'])
+        setCatagery(category.filter((item) => {
+          if (item.id != id)
+            return item
+        }));
+      }
+    })
+  }
   // creat a disply catagery inner function 
   let Displaycategory = function (item) {
     return (
@@ -12,20 +36,18 @@ export default function AdminCategory() {
         <td><img src={"https://www.theeasylearnacademy.com/shop/images/category/" + item.photo} className="img-fluid" /></td>
         <td>{(item.islive == '1') ? 'Yes' : 'No'}</td>
         <td>
-          <Link to='/editcatagery'><button className="btn btn-info mb-2">
+          <Link to={"/editcatagery/" + item.id}> <button className="btn btn-info mb-2">
             <i className="fa-regular fa-pen-to-square" /> Edite
+
           </button></Link><br />
-          {/* <a href="admin-product-detail.html"><button class="btn btn-info mb-2"><i class="fa-solid fa-eye"></i> View</button></a> <br> */}
-          <button className="btn btn-info mb-2">
+          <a href="" onClick={(e) => { e.preventDefault(); Deleatecategory(item.id) }} > <button className="btn btn-info mb-2">
             <i className="fa-solid fa-eraser" />Remove
-          </button>
+          </button></a>
         </td>
       </tr>
     )
   }
 
-  // creat steate arey 
-  let [category, setCatagery] = useState([])
   // use hook effect 
   useEffect(() => {
     let apiAddress = "https://www.theeasylearnacademy.com/shop/ws/category.php"
@@ -43,7 +65,7 @@ export default function AdminCategory() {
         else {
           data.splice(0, 2);
           console.log(data);
-          setCatagery(data) ;
+          setCatagery(data);
         }
       })
       .catch((error) => {

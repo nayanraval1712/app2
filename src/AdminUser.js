@@ -87,7 +87,7 @@ export default function AdminUser() {
                                                             <i className="fa fa-gift fa-2x" /> </a>&nbsp;
                                                     </td>
                                                 </tr> */}
-                                                   {users.map((item) => DisplayUser(item))}
+                                                {users.map((item) => DisplayUser(item))}
                                             </tbody>
                                         </table>
                                     </div>

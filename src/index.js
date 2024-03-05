@@ -27,7 +27,7 @@ function MyRouter() {
         <Route path='/user' element={<AdminUser />} />
         <Route path='/catagery' element={<AdminCategory />} />
         <Route path='/addcatagery' element={<AdminAddCategory />} />
-        <Route path='/editcatagery' element={<AdminEditCategory />} />
+        <Route path='/editcatagery/:categeryid' element={<AdminEditCategory />} />
         <Route path='/product' element={<AdminProduct />} />
         <Route path='/addproduct' element={<AdminAddProduct />} />
         <Route path='/editproduct' element={<AdminEditProduct />} />

@@ -3,20 +3,22 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import getBase from "./api";
+import { ToastContainer } from "react-toastify";
 export default function AdminAddProduct() {
-
-    // sttate variable banava k j input ma store ty 
+    // state variable banava k j input ma store ty 
     let [catageryID, setCatageryID] = useState('')
     let [name, setName] = useState('')
-    let [price, setPrice] = useState('')
-    let [stock, setStock] = useState('')
+    let [price, setPrice] = useState(0)
+    let [stock, setStock] = useState(0)
     let [Weight, setWeight] = useState('')
     let [size, setSize] = useState('')
     let [photo, setPhoto] = useState('')
-    let [isLive, setIsLive] = useState('')
-    let [description, setDescription] = useState('')
+    let [islive, setIsLive] = useState('')
+    let [detail, setDetail] = useState('')
     let navigator = useNavigate();
-    var [categories, setCategory] = useState([]);
+
+    var [categories, setCategory] = useState([]); // state categery arry 
 
     useEffect(() => {
         if (categories.length === 0) {
@@ -35,7 +37,7 @@ export default function AdminAddProduct() {
                 }
                 else {
                     response.data.splice(0, 2);
-                    console.log(response.data); //set state array 
+                    setCategory(response.data); //set state array 
                 }
             }).catch((error) => {
                 console.log(error);
@@ -47,21 +49,21 @@ export default function AdminAddProduct() {
     });
 
 
-    let insurtproduct = function (event) {
+    let insertProduct = function (event) {
         event.preventDefault();
-        console.log(catageryID, name, price, stock, Weight, size, isLive, description, photo);
+        console.log(catageryID, name, price, stock, Weight, size, islive, detail, photo);
         let apiAddress = 'https://www.theeasylearnacademy.com/shop/ws/insert_product.php'
         let form = new FormData()
-        form.append('catageryID', catageryID)
+        form.append('catageryid', catageryID)
         form.append('name', name)
         form.append('price', price)
         form.append('stock', stock)
         form.append('Weight', Weight)
         form.append('size', size)
         form.append('photo', photo)
-        form.append('isLive', isLive)
-        form.append('description', description)
-        console.log(form)
+        form.append('islive', islive)
+        form.append('detail', detail)
+        console.log(FormData)
         axios({
             method: 'post', // server per data upload karva na hoy tyare post method use ty che 
             responseType: 'json',
@@ -81,7 +83,7 @@ export default function AdminAddProduct() {
                     else {
                         console.log(message);
                         setTimeout(() => {
-                            navigator("/catagery");
+                            navigator("/product");
                         }, 2000);
                     }
                 }
@@ -91,6 +93,7 @@ export default function AdminAddProduct() {
                     console.log();
             })
     }
+
 
     return (
         <div id="wrapper">
@@ -117,14 +120,14 @@ export default function AdminAddProduct() {
                                 <Link to="/product" className="btn btn-primary">Back</Link>
                             </div>
                             <div className="card-body">
-                                <form onSubmit={insurtproduct}>
+                                <form onSubmit={insertProduct}>
                                     <div className="row g-3">
                                         {/* 1st row */}
                                         <div className="col-md-12 d-flex justify-content-between">
                                             <div className="mt-3">
                                                 <label htmlFor="categoryid" className="form-label text-center">Category
                                                     ID</label>
-                                                <select className="form-select" id="categoryid" onChange={(event) => setCatageryID(event.target.value)} name="categoryid" value={catageryID} required autofocus>
+                                                <select className="form-select" id="categoryid" onChange={(event) => setCatageryID(event.target.value)} name="categoryid" value={catageryID} autofocus>
                                                     {categories.map((item) => {
                                                         return (<option value={item.id}>{item.title}</option>)
                                                     })}
@@ -143,7 +146,7 @@ export default function AdminAddProduct() {
                                         </div>
                                         <div className="col-md-4 mt-4">
                                             <label htmlFor="price" className="form-label">Price</label>
-                                            <input type="number" className="form-control" id="price" name="price" value={price} onChange={(event) => setPrice(Number(event.target.value))} required />
+                                            <input type="number" className="form-control" id="price" name="price" value={price} onChange={(event) => setPrice((event.target.value))} required />
                                         </div>
                                         <div className="col-md-4 mt-4">
                                             <label htmlFor="stock" className="form-label">Stock</label>
@@ -160,23 +163,23 @@ export default function AdminAddProduct() {
                                         </div>
                                         <div className="col-md-4 mt-3">
                                             <label htmlFor="photo" className="form-label">Photo</label>
-                                            <input type="file" className="form-control" id="photo" onChange={(event) => setPhoto(event.target.files[0])} name="photo" required />
+                                            <input type="file" className="form-control" id="photo" accept="Image/*" onChange={(event) => setPhoto(event.target.files[0])} name="photo" />
                                         </div>
                                         {/* 3rd row */}
                                         <div className="col-md-2 mt-3">
                                             <label className="form-check-label d-block">Is Live</label>
                                             <div className="form-check form-check">
-                                                <input className="form-check-input" type="radio" name="islive" onChange={(event) => setIsLive(event.target.value)} Value={1} id="yes" defaultValue="yes" required />
+                                                <input className="form-check-input" type="radio" name="islive" onChange={(event) => setIsLive(event.target.value)} Value={1} id="yes" required />
                                                 <label className="form-check-label" htmlFor="yes">Yes</label>
                                             </div>
                                             <div className="form-check form-check">
-                                                <input className="form-check-input" type="radio" name="islive" onChange={(event) => setIsLive(event.target.value)} Value={0} id="no" defaultValue="no" required />
+                                                <input className="form-check-input" type="radio" name="islive" onChange={(event) => setIsLive(event.target.value)} Value={0} id="no" required />
                                                 <label className="form-check-label" htmlFor="no">No</label>
                                             </div>
                                         </div>
                                         <div className="col-md-7 mt-3">
                                             <label htmlFor="detail" className="form-label">Detail</label>
-                                            <textarea className="form-control" id="detail" name="detail" rows={3} onChange={(event) => setDescription(event.target.value)} value={description} />
+                                            <textarea className="form-control" id="detail" name="detail" rows={3} onChange={(event) => setDetail(event.target.value)} value={detail} />
                                         </div>
                                     </div>
                                 </form>
@@ -188,3 +191,4 @@ export default function AdminAddProduct() {
         </div>
     )
 }
+
