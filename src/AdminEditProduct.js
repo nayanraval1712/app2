@@ -1,4 +1,4 @@
-import AdminManu from "./AdminManu";
+import AdminManu from "./AdminManu"; 
 export default function AdminEditProduct() {
     return (
         <div id="wrapper">

@@ -16,9 +16,9 @@ export default function AdminAddProduct() {
     let [photo, setPhoto] = useState('')
     let [islive, setIsLive] = useState('')
     let [detail, setDetail] = useState('')
-    let navigator = useNavigate();
-
+    
     var [categories, setCategory] = useState([]); // state categery arry 
+    let navigator = useNavigate();
 
     useEffect(() => {
         if (categories.length === 0) {
@@ -129,7 +129,7 @@ export default function AdminAddProduct() {
                                                     ID</label>
                                                 <select className="form-select" id="categoryid" onChange={(event) => setCatageryID(event.target.value)} name="categoryid" value={catageryID} autofocus>
                                                     {categories.map((item) => {
-                                                        return (<option value={item.id}>{item.title}</option>)
+                                                        return <option value={item.id}>{item.title}</option>
                                                     })}
                                                 </select>
                                             </div>
