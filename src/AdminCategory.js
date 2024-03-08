@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export default function AdminCategory() {
-
   // creat state arrey 
   let [category, setCatagery] = useState([])
   let Deleatecategory = function (id) {

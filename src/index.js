@@ -17,6 +17,7 @@ import AdminProductDetail from './AdminProductDetail';
 import AdminOrder from './AdminOrder';
 import AdminOrderDetails from './AdminOrderDetails';
 import AdminManu from './AdminManu';
+import AdminHome from './AdminHome';
 
 function MyRouter() {
   return (
@@ -24,6 +25,7 @@ function MyRouter() {
       <Routes>
 
         <Route index path='/' element={<AdminLogin />} />
+        <Route index path='/forgotpassword' element={<AdminForgotpassword />} />
         <Route path='/user' element={<AdminUser />} />
         <Route path='/catagery' element={<AdminCategory />} />
         <Route path='/addcatagery' element={<AdminAddCategory />} />
@@ -35,6 +37,7 @@ function MyRouter() {
         <Route path='/order' element={<AdminOrder />} />
         <Route path='/orderdetails/:orderid' element={<AdminOrderDetails />} />
         <Route path='/manu' element={<AdminManu />} />
+        <Route path='/home' element={<AdminHome />} />
 
       </Routes>
     </BrowserRouter>
