@@ -2,7 +2,6 @@ import { useState,useEffect } from "react"
 import axios from "axios"
 import AdminMenu from "./AdminManu"
 export default function AdminHome() {
-
     // creat a state veriable  for .... id show
     let [home, setHome] = useState('')
 
